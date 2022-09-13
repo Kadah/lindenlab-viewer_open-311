@@ -355,10 +355,10 @@ LLVector3 LLManip::getSavedPivotPoint() const
 
 LLVector3 LLManip::getPivotPoint()
 {
-	static LLCachedControl<bool> sActualRoot(gSavedSettings, "ManipPivotAtRoot", false);
+	static LLCachedControl<bool> sManipPivotAtRoot(gSavedSettings, "ManipPivotAtRoot", false);
 	const BOOL children_ok = TRUE;
 	LLViewerObject* root_object = mObjectSelection->getFirstRootObject(children_ok);
-	if (root_object && (mObjectSelection->getObjectCount() == 1 || sActualRoot) && mObjectSelection->getSelectType() != SELECT_TYPE_HUD)
+	if (root_object && (mObjectSelection->getObjectCount() == 1 || sManipPivotAtRoot) && mObjectSelection->getSelectType() != SELECT_TYPE_HUD)
 	{
 		return root_object->getPivotPositionAgent();
 	}
