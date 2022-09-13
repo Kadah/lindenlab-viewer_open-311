@@ -355,9 +355,12 @@ LLVector3 LLManip::getSavedPivotPoint() const
 
 LLVector3 LLManip::getPivotPoint()
 {
-	if (mObjectSelection->getFirstObject() && mObjectSelection->getObjectCount() == 1 && mObjectSelection->getSelectType() != SELECT_TYPE_HUD)
+	static LLCachedControl<bool> sActualRoot(gSavedSettings, "ManipPivotAtRoot", false);
+	const BOOL children_ok = TRUE;
+	LLViewerObject* root_object = mObjectSelection->getFirstRootObject(children_ok);
+	if (root_object && (mObjectSelection->getObjectCount() == 1 || sActualRoot) && mObjectSelection->getSelectType() != SELECT_TYPE_HUD)
 	{
-		return mObjectSelection->getFirstObject()->getPivotPositionAgent();
+		return root_object->getPivotPositionAgent();
 	}
 	return LLSelectMgr::getInstance()->getBBoxOfSelection().getCenterAgent();
 }

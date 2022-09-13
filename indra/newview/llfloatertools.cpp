@@ -253,6 +253,7 @@ BOOL	LLFloaterTools::postBuild()
 	mCheckStretchTexture	= getChild<LLCheckBoxCtrl>("checkbox stretch textures");
 	getChild<LLUICtrl>("checkbox stretch textures")->setValue((BOOL)gSavedSettings.getBOOL("ScaleStretchTextures"));
 	mComboGridMode			= getChild<LLComboBox>("combobox grid mode");
+	mCheckManipPivotAtRoot	= getChild<LLCheckBoxCtrl>("checkbox actual root");
 
 	//
 	// Create Buttons
@@ -334,6 +335,7 @@ LLFloaterTools::LLFloaterTools(const LLSD& key)
 	mCheckStretchUniform(NULL),
 	mCheckStretchTexture(NULL),
 	mCheckStretchUniformLabel(NULL),
+	mCheckManipPivotAtRoot(NULL),
 
 	mBtnRotateLeft(NULL),
 	mBtnRotateReset(NULL),
@@ -758,6 +760,7 @@ void LLFloaterTools::updatePopup(LLCoordGL center, MASK mask)
 	if (mCheckStretchUniform) mCheckStretchUniform->setVisible( edit_visible );
 	if (mCheckStretchTexture) mCheckStretchTexture->setVisible( edit_visible );
 	if (mCheckStretchUniformLabel) mCheckStretchUniformLabel->setVisible( edit_visible );
+	if (mCheckManipPivotAtRoot) mCheckManipPivotAtRoot->setVisible( edit_visible );
 
 	// Create buttons
 	BOOL create_visible = (tool == LLToolCompCreate::getInstance());

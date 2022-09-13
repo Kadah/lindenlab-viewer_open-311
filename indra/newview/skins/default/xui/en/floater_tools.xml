@@ -272,7 +272,7 @@
      follows="left|top"
      height="20"
      label="Link"
-     top="108"
+     top="116"
      layout="topleft"
      left="143"
      name="link_btn"
@@ -319,7 +319,7 @@
      initial_value="true"
      label="Snap"
      layout="topleft"
-     top_pad="0"
+     top_pad="-1"
      name="checkbox snap to grid"
      width="134" />
     <combo_box
@@ -328,9 +328,8 @@
       follows="left|top"
       name="combobox grid mode"
       tool_tip="Choose the type of grid ruler for positioning the object"
-      top="83"
+      top="81"
       left="195"
-      top_pad="0"
       width="60">
       <combo_box.item
       label="World"
@@ -347,6 +346,16 @@
       <combo_box.commit_callback
       function="BuildTool.gridMode"/>
     </combo_box>  
+	<check_box
+	 control_name="ManipPivotAtRoot"
+	 height="18"
+	 initial_value="false"
+	 label="Edit axis at root"
+	 layout="topleft"
+     left="143"
+	 top_pad="-2"
+	 name="checkbox actual root"
+	 width="134" />
   
   <button
      left="259"
